@@ -9,8 +9,8 @@ import org.junit.Test;
 
 public class TestPalabrasRepetidas {
     
-    private String path1 = "C:/Users/Jorge/Desktop/texto1.txt";
-    private String path2 = "C:/Users/Jorge/Desktop/texto2.txt";
+    private String path1 = "C:/texto1.txt";
+    private String path2 = "C:/texto2.txt";
     private ArrayList<String> repeatwords = new ArrayList();
     
     public TestPalabrasRepetidas() {
