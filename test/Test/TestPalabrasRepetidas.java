@@ -19,8 +19,7 @@ public class TestPalabrasRepetidas {
     @Test
     public void ReadFile() throws FileNotFoundException, IOException{
         Text text = new Text();
-        text.ReadFile(path1, path2);
-        repeatwords = text.getRepeatWords();
+        repeatwords = text.getListWords(path1, path2);
         assertEquals(repeatwords.toString(), "[en, lugar, de, nombre, no, acordarme, mucho, tiempo]");
     }
 }
