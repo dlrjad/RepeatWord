@@ -1,35 +1,24 @@
 package File;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Text {
-    private File file = null;
-    private FileReader fr = null;
-    private BufferedReader br = null;
     private String delims = "[ .,?!]+";
     private ArrayList<String> repeatwords = new ArrayList();
     
     public Text(){}
     
-    public ArrayList<String> getListWords(String path1, String path2) throws FileNotFoundException, IOException{
-        String[] tokens1 = getWord(path1);
-        String[] tokens2 = getWord(path2);
+    public ArrayList<String> getListWords(String text1, String text2) throws FileNotFoundException, IOException{
+        String[] tokens1 = getWord(text1);
+        String[] tokens2 = getWord(text2);
         compareWord(tokens1, tokens2);
-        closeFile();
         return repeatwords;
     }
     
-    private String[] getWord(String path) throws FileNotFoundException, IOException{
-        file = new File(path);
-        fr = new FileReader(file);
-        br = new BufferedReader(fr); 
-        String line = br.readLine();
-        String[] tokens = line.split(delims);
+    private String[] getWord(String text) throws FileNotFoundException, IOException{
+        String[] tokens = text.split(delims);
         return tokens;
     }
     
@@ -39,12 +28,6 @@ public class Text {
                 wordFound(tokens1, i, tokens2, j);
             }
         }
-    }
-    
-    private void closeFile() throws IOException {
-        if( null != fr ){
-            fr.close();    
-        } 
     }
 
     private void wordFound(String[] tokens1, int i, String[] tokens2, int j) {
@@ -61,6 +44,6 @@ public class Text {
             }
         }
         if(flag) repeatwords.add(tokens1[i]);
-        flag = false;
+        else flag = false;
     }
 }
